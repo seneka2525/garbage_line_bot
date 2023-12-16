@@ -1,0 +1,1 @@
+web: python garbage_notify.py

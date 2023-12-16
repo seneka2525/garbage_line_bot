@@ -48,3 +48,4 @@ text2 = "🐦‍⬛か〜\n明日は"+date_check+"収集の日("+text1+")じゃ�
 #     send_line(text2)
 
 send_line(text2)
+print(pd.__version__)
