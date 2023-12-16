@@ -13,7 +13,7 @@ def get_nth_dow(year, month, day):
 
 def send_line(text):
     url = 'https://notify-api.line.me/api/notify'
-    token = 'KJJ440W7YLhqLdXW65kkyW8OPuApVnO0dh1tYOcqs3v'
+    token = 'DH9Fcyyam72VHKqj8fmBFstBJOuPobRpQUL4gDPvRCS'
     headers = {'Authorization' : 'Bearer ' + token}
     message = text
     payload = {'message' : message}
@@ -42,10 +42,10 @@ date_check = schedule.iat[tom_nth_dow]
 text1 = "第"+str(tom_nth_dow[0])+date_jp[tom_nth_dow[1]]+"曜日"
 text2 = "🐦‍⬛か〜\n明日は"+date_check+"収集の日("+text1+")じゃけん。\n忘れんと捨てないかんけん!!"
 
-# if date_check == "":
-#     print("明日のゴミ出しはありません")
-# else:
-#     send_line(text2)
+if date_check == "":
+    print("明日のゴミ出しはありません")
+else:
+    send_line(text2)
 
-send_line(text2)
-print(pd.__version__)
+# send_line(text2)
+# print(pd.__version__)
