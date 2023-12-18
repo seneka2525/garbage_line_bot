@@ -3,13 +3,19 @@ import datetime
 import pandas as pd
 import requests
 
-def get_nth_week(year, month, day, firstweekday=0):
-    first_dow = datetime.date(year, month, 1).weekday()
-    offset = (first_dow - firstweekday) % 7
-    return (day + offset - 1) // 7 + 1
+# def get_nth_week(year, month, day, firstweekday=0):
+#     first_dow = datetime.date(year, month, 1).weekday()
+#     offset = (first_dow - firstweekday) % 7
+#     return (day + offset - 1) // 7 + 1
+
+# def get_nth_dow(year, month, day):
+#     return get_nth_week(year, month, day, 6), calendar.weekday(year, month, day)
+
+def get_nth_week(day):
+    return (day - 1) // 7 + 1
 
 def get_nth_dow(year, month, day):
-    return get_nth_week(year, month, day, 6), calendar.weekday(year, month, day)
+    return get_nth_week(day), calendar.weekday(year, month, day)
 
 def send_line(text):
     url = 'https://notify-api.line.me/api/notify'
@@ -46,6 +52,11 @@ if date_check == "":
     print("明日のゴミ出しはありません")
 else:
     send_line(text2)
+
+# print(get_nth_week(2023, 12, 3, 6))
+
+# print(text1)
+# print(text2)
 
 # send_line(text2)
 # print(pd.__version__)
