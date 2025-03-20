@@ -1,7 +1,37 @@
 import calendar
 import datetime
 import pandas as pd
-import requests
+# import requests
+import requests, os
+from linebot.v3 import WebhookHandler
+from linebot.v3.messaging import Configuration, MessagingApi, ApiClient, PushMessageRequest, ApiException, TextMessage
+
+configuration = Configuration(
+    # access_token = 'wz9wy77xkhIA3KRLtDZI5T8YhtyLwGD6UTVDXbIw3sSVti8qKnaJjpm091uBzGQqc2AcrzinmL68Ns4BFMii8q1pA4ViQuuocPxh4qd5NVJh02LNQlQWYE1BEjbVamuEYYAqBoy3rhTp7fz8z2pe8AdB04t89/1O/w1cDnyilFU='
+    access_token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
+)
+
+LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
+handler = WebhookHandler(LINE_CHANNEL_SECRET)
+
+headler = {
+    "Content_Type": "application/json",
+    "Authorization": "Bearer " + LINE_CHANNEL_ACCESS_TOKEN
+}
+
+with ApiClient(configuration) as api_client:
+        line_bot_api = MessagingApi(api_client)
+
+
+        # message=TextMessage(text='届いたんかね？')
+
+        # line_bot_api.push_message_with_http_info(
+        #     PushMessageRequest(
+        #         to='U19f467cfd98ea214b39f33fccb6f8a6b',
+        #         messages=[message]
+        #     )
+        # )
+
 
 # def get_nth_week(year, month, day, firstweekday=0):
 #     first_dow = datetime.date(year, month, 1).weekday()
@@ -17,14 +47,14 @@ def get_nth_week(day):
 def get_nth_dow(year, month, day):
     return get_nth_week(day), calendar.weekday(year, month, day)
 
-def send_line(text):
-    url = 'https://notify-api.line.me/api/notify'
-    token = 'DH9Fcyyam72VHKqj8fmBFstBJOuPobRpQUL4gDPvRCS'
-    headers = {'Authorization' : 'Bearer ' + token}
-    message = text
-    payload = {'message' : message}
-    p = requests.post(url, headers=headers, data=payload)
-    print(p)
+# def send_line(text):
+#     url = 'https://notify-api.line.me/api/notify'
+#     token = 'DH9Fcyyam72VHKqj8fmBFstBJOuPobRpQUL4gDPvRCS'
+#     headers = {'Authorization' : 'Bearer ' + token}
+#     message = text
+#     payload = {'message' : message}
+#     p = requests.post(url, headers=headers, data=payload)
+#     print(p)
 
 schedule = pd.DataFrame([
     ["Mon"     , "Tue"        , "Wed", "Thurs"   , "Fri"       , "Sat"       , "Sun"],
@@ -51,7 +81,17 @@ text2 = "🐦‍⬛か〜\n明日は"+date_check+"収集の日("+text1+")じゃ�
 if date_check == "":
     print("明日のゴミ出しはありません")
 else:
-    send_line(text2)
+    # send_line(text2)
+    message=TextMessage(text=text2)
+
+    line_bot_api.push_message_with_http_info(
+        PushMessageRequest(
+            # to='U19f467cfd98ea214b39f33fccb6f8a6b',
+            to = os.environ["TO"]
+            messages=[message]
+        )
+    )
+
 
 # print(get_nth_week(2023, 12, 3, 6))
 
