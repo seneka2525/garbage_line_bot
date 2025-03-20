@@ -1,1 +1,1 @@
-web: python garbage_notify.py
+web: python garbagemessages.py
