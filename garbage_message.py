@@ -52,10 +52,10 @@ if date_check == "":
     print("明日のゴミ出しはありません")
 else:
     message=TextMessage(text=text2)
-
+    print(message)
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            to = os.environ.get("TO")
+            to = os.environ.get("TO"),
             messages=[message]
         )
     )
