@@ -6,10 +6,10 @@ from linebot.v3 import WebhookHandler
 from linebot.v3.messaging import Configuration, MessagingApi, ApiClient, PushMessageRequest, ApiException, TextMessage
 
 configuration = Configuration(
-    access_token = ${{ vars.LINE_CHANNEL_ACCESS_TOKEN }}
+    access_token = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 )
 
-LINE_CHANNEL_SECRET = ${{ vars.LINE_CHANNEL_SECRET }}
+LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 headler = {
@@ -55,7 +55,7 @@ else:
 
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            to = ${{ vars.TO }}
+            to = os.environ.get("TO")
             messages=[message]
         )
     )
