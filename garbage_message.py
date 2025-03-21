@@ -12,10 +12,10 @@ configuration = Configuration(
 LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-headler = {
-    "Content_Type": "application/json",
-    "Authorization": "Bearer " + LINE_CHANNEL_ACCESS_TOKEN
-}
+# headler = {
+#     "Content_Type": "application/json",
+#     "Authorization": "Bearer " + access_token
+# }
 
 with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
