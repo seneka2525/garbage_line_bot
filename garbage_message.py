@@ -41,7 +41,7 @@ tom_nth_dow = get_nth_dow(tomorrow.year, tomorrow.month, tomorrow.day)
 date_check = schedule.iat[tom_nth_dow]
 
 text1 = "第"+str(tom_nth_dow[0])+date_jp[tom_nth_dow[1]]+"曜日"
-text2 = "＜ゴミの日通知＞ 明日は\n"+date_check+"収集の日\n("+text1+")じゃけん。\n忘れんと捨てないかんけん!!"
+text2 = "＜ゴミの日通知＞ 🐦‍⬛か～ 明日は\n"+date_check+"収集の日\n("+text1+")じゃけん。\n忘れんと捨てないかんけん!!"
 
 if date_check == "":
     print("明日のゴミ出しはありません")
