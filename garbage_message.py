@@ -3,16 +3,8 @@ import datetime
 import pandas as pd
 import requests, os
 
-from linebot import LineBotApi
-from linebot.models import TextSendMessage
-
 from linebot.v3 import WebhookHandler
 from linebot.v3.messaging import Configuration, MessagingApi, ApiClient, PushMessageRequest, ApiException, TextMessage
-
-ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
-bot = LineBotApi(ACCESS_TOKEN)
-profile = bot.get_profile(os.environ.get("TO"))
-print(profile)
 
 configuration = Configuration(
     access_token = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
