@@ -48,11 +48,10 @@ if date_check == "":
     print("明日のゴミ出しはありません")
 else:
     message=TextMessage(text=text2)
-    print(message)
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            group_id = os.environ.get("GROUP_ID"),
-            # to = os.environ.get("TO"),
+            # group_id = os.environ.get("GROUP_ID"),
+            to = os.environ.get("TO"),
             messages=[message]
         )
     )
