@@ -10,9 +10,6 @@ configuration = Configuration(
     access_token = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 )
 
-# LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
-# handler = WebhookHandler(LINE_CHANNEL_SECRET)
-
 with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
 
@@ -50,8 +47,8 @@ else:
     message=TextMessage(text=text2)
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            # group_id = os.environ.get("GROUP_ID"),
-            to = os.environ.get("TO"),
+            group_id = os.environ.get("GROUP_ID"),
+            # to = os.environ.get("TO"),
             messages=[message]
         )
     )
