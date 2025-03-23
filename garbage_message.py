@@ -47,9 +47,8 @@ else:
     message=TextMessage(text=text2)
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            # group_id = os.environ.get("GROUP_ID"),
-            # to = os.environ.get("TO"),
-            to = os.environ.get("GROUP_ID"),
+            group_id = os.environ.get("GROUP_ID"),
+            to = os.environ.get("TO"),
             messages = [message]
         )
     )
