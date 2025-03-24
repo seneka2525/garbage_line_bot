@@ -52,7 +52,7 @@ else:
         PushMessageRequest(
             # group_id = os.environ.get("G"),
             # group_id = "Ca5540282f731453f27b7e6e95c6d5011",
-            to = "U19f467cfd98ea214b39f33fccb6f8a6b",
+            to = "Ca5540282f731453f27b7e6e95c6d5011",
             messages = [message]
         )
     )
