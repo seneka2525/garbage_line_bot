@@ -6,6 +6,7 @@ import requests, os
 from linebot.v3 import WebhookHandler
 from linebot.v3.messaging import Configuration, MessagingApi, ApiClient, PushMessageRequest, ApiException, TextMessage
 
+print(os.environ.get("GROUP_ID"))
 configuration = Configuration(
     access_token = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 )
@@ -48,7 +49,6 @@ else:
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
             group_id = os.environ.get("GROUP_ID"),
-            # to = os.environ.get("TO"),
             messages = [message]
         )
     )
