@@ -8,7 +8,7 @@ from linebot.v3.messaging import Configuration, MessagingApi, ApiClient, PushMes
 
 print(os.environ.get("TO"))
 print(os.environ.get("LINE_CHANNEL_ACCESS_TOKEN"))
-print(os.environ.get("GROUP_ID"))
+print(os.environ.get("G"))
 configuration = Configuration(
     access_token = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 )
@@ -50,7 +50,7 @@ else:
     message=TextMessage(text=text2)
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
-            group_id = os.environ.get("GROUP_ID"),
+            group_id = os.environ.get("G"),
             messages = [message]
         )
     )
