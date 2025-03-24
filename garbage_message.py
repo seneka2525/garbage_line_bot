@@ -51,7 +51,8 @@ else:
     line_bot_api.push_message_with_http_info(
         PushMessageRequest(
             # group_id = os.environ.get("G"),
-            group_id = "Ca5540282f731453f27b7e6e95c6d5011",
+            # group_id = "Ca5540282f731453f27b7e6e95c6d5011",
+            to = "U19f467cfd98ea214b39f33fccb6f8a6b",
             messages = [message]
         )
     )
